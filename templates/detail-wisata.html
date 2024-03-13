@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block y %}
+  <!-- Package Start -->
+  <div class="container-xxl py-5">
+    <div class="container">
+      <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+        <h6 class="section-title bg-white text-center text-primary px-3">
+          {{wisata['categoy']}}
+        </h6>
+        <h1 class="mb-5">{{ wisata['name'] }}</h1>
+
+        <div class="card">
+            <div class="card-image">
+                <figure class="image is-fullwidth">
+                    <img src="/{{ wisata.image_wisata }}" alt="Image">
+                </figure>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Rp {{ wisata['price'] }} / tiket</h5>
+                <span class="text-sm">Lokasi : {{ wisata['location'] }}</span>
+                <p>{{wisata['description']}}</p>
+
+                <hr>
+                <div class="d-flex justify-content-center">
+                    <form action="/booking-wisata" method="post" class="form w-50">
+                        <input type="hidden" name="user_id" value="{{session['user_id']}}">
+                        <input type="hidden" name="wisata_id" value="{{wisata['_id']}}">
+                        <div class="mb-3">
+                            <label for="tiket" class="form-label">Jumlah Tiket</label>
+                            <input type="text" name="tiket" class="form-control" id="tiket" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Pesan</button>
+                    </form>
+                </div>
+              </div>
+        </div>
+      </div>
+  </div>
+    </div>
+  </div>
+  <!-- Package End -->
+
+{% endblock %}

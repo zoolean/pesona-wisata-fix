@@ -1,0 +1,48 @@
+{% extends "layout-admin.html" %}
+
+{% block y %}
+<div class="container mt-4">
+  <h3 class="text">List Pesanan</h3>
+
+  <div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Booking Id</th>
+                <th>Wisata</th>
+                <th>Harga</th>
+                <th>Bukti</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for booking in bookings %}
+            <tr>
+                <td>{{booking['_id']}}</td>
+                <td>{{booking['wisata_name']}}</td>
+                <td>{{booking['total_harga']}}</td>
+                <td>
+                    <a href="{{booking['bukti']}}" target="_blank">Lihat Bukti</a>
+                </td>
+                <td>
+                    <form action="/admin-pesanan/update-status/{{booking['_id']}}" method="post" class="">
+                        <div class="row">
+                            <select name="status" id="" class="form-select col">
+                                <option value="{{booking['status']}}">{{booking['status']}}</option>
+                                <option value="pending">Pending</option>
+                                <option value="acc">Acc</option>
+                                <option value="cancel">Cancel</option>
+                            </select>
+                            <button type="submit" class="btn btn-primary col">Ubah</button>
+                        </div>
+                   </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
+  </div>
+</div>
+
+{% endblock %}

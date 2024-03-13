@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block y %}
+  <!-- Package Start -->
+  <div class="container-xxl py-5">
+    <div class="container">
+      <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+        <h6 class="section-title bg-white text-center text-primary px-3">
+          Packages
+        </h6>
+        <h1 class="mb-5">Paket Wisata Domestik</h1>
+      </div>
+      <div class="row">
+    {% for wisata in wisatas %}
+        <div class="card m-3" style="width: 18rem;">
+          <img src="/{{ wisata['image_wisata'] }}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">{{ wisata['name'] }}</h5>
+            <h5 class="card-title">Rp {{ wisata['price'] }} / tiket</h5>
+            <span class="text-sm">Lokasi : {{ wisata['location'] }}</span>
+          </div>
+          <div class="card-body">
+            <a href="/wisata/{{wisata['_id']}}" class="card-link">Selengkapnya</a>
+
+          </div>
+        </div>
+    {% endfor %}
+  </div>
+    </div>
+  </div>
+  <!-- Package End -->
+
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends "layout-admin.html" %}
+
+{% block y %}
+<div class="container mt-4">
+  <h3 class="text">Tambah Wisata</h3>
+
+  <div class="card">
+  <div class="card-body">
+    <form method="post" action="/admin-add-wisata" enctype="multipart/form-data">
+      <div class="mb-3">
+        <label for="nama-wisata" class="form-label">Nama Wisata</label>
+        <input type="text" name="name" class="form-control" id="nama-wisata" required>
+      </div>
+      <div class="mb-3">
+        <label for="kategiri" class="form-label">Kategori Wisata</label>
+        <select class="form-select" name="category" aria-label="Default select example">
+          <option value="domestic">Domestic</option>
+          <option value="international">International</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="lokasi" class="form-label">Lokasi</label>
+        <input type="text" name="location" class="form-control" id="lokasi" required>
+      </div>
+
+       <div class="mb-3">
+        <label for="harga" class="form-label">Harga</label>
+        <input type="number" name="price" class="form-control" id="harga" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="gambar" class="form-label">Gambar</label>
+        <input type="file" name="image_wisata" class="form-control" id="gambar" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="deskripsi" class="form-label">Deskripsi</label>
+        <textarea class="form-control" name="description" id="deskripsi" rows="3"></textarea>
+      </div>
+      <button class="btn btn-primary" type="submit">Tambah</button>
+    </form>
+  </div>
+</div>
+</div>
+{% endblock %}

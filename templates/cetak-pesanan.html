@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <title>Pesanan</title>
+    <style>
+        @media print {
+            #btn-cetak {
+                display: none;
+            }
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="p-5" style="width: 500px;">
+        <h1>Pesanan</h1>
+        <div>
+            <div class="row">
+                <div class="col">
+                    <p>Booking ID</p>
+                </div>
+                <div class="col">
+                    <p>{{booking['_id']}}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <p>wisata</p>
+                </div>
+                <div class="col">
+                    <p>{{booking['wisata_name']}}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <p>Jumlah Tiket</p>
+                </div>
+                <div class="col">
+                    <p>{{booking['tiket']}}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <p>Total Harga</p>
+                </div>
+                <div class="col">
+                    <p>{{booking['total_harga']}}</p>
+                </div>
+            </div>
+            <h2>LUNAS!</h2>
+            <br>
+            <button onclick="cetak()" id="btn-cetak" class="btn btn-primary">Cetak</button>
+        </div>
+    </div>
+</body>
+<script>
+    function cetak(){
+        window.print()
+    }
+</script>
+</html>

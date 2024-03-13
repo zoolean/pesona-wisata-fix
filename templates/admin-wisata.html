@@ -1,0 +1,27 @@
+{% extends "layout-admin.html" %}
+
+{% block y %}
+<div class="container mt-4">
+  <h3 class="text">List Wisata</h3>
+  <a href="/admin-add-wisata" class="btn btn-primary my-2">Tambah Wisata</a>
+  <div class="row">
+    {% for wisata in wisatas %}
+        <div class="card m-3" style="width: 18rem;">
+          <img src="/{{ wisata['image_wisata'] }}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">{{ wisata['name'] }}</h5>
+            <h5 class="card-title">Rp {{ wisata['price'] }} / tiket</h5>
+            <span class="badge bg-primary">{{ wisata['categoy'] }}</span>
+            <br>
+            <span class="text-sm mt-1">Lokasi : {{ wisata['location'] }}</span>
+          </div>
+          <div class="card-body">
+            <a href="/admin-edit-wisata/{{wisata['_id']}}" class="card-link">Edit</a>
+            <a href="/admin-delete-wisata/{{wisata['_id']}}" class="card-link text-danger">Hapus</a>
+          </div>
+        </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}

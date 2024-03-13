@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block y %}
+  <!-- Package Start -->
+  <div class="container-xxl py-5">
+    <div class="container">
+      <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+        <h1 class="mb-5">Daftar Pesanan</h1>
+      </div>
+      <div class="row">
+    {% for booking in bookings %}
+        <div class="card m-3" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">{{ booking['wisata_name'] }}</h5>
+            <h5 class="card-title">Total Harga: Rp. {{ booking['total_harga'] }}</h5>
+            <span class="text-sm">Status : {{booking['status'] }}</span>
+
+            {% if booking['bukti'] == '' %}
+            <form action="/pesanan/upload-bukti" method="post"  enctype="multipart/form-data">
+                <input type="hidden" name="booking_id" value="{{booking['_id']}}">
+                <div class="mb-3">
+                    <label for="bukti" class="form-label">Upload Bukti Pembayaran</label>
+                    <input type="file" name="bukti" class="form-control" id="bukti" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+            {%elif booking['status'] == 'acc' %}
+                <div>
+                  <a href="/cetak-pesanan/{{booking['_id']}}" class="btn btn-primary">Cetak Tiket</a>
+                </div>
+            {%else %}
+                <p class="text-xs">Bukti pembayaran sudah di upload</p>
+            {% endif %}
+          </div>
+        </div>
+    {% endfor %}
+  </div>
+    </div>
+  </div>
+  <!-- Package End -->
+
+{% endblock %}
